@@ -1,0 +1,103 @@
+Build a privacy-first, offline-only Progressive Web App (PWA)  called ** EgoOs** designed for deep personal reflection and self-exploration.
+
+The app functions as a private mental archive where a user can safely record and revisit their dreams, goals, attractions, crushes, preferences, values, and personal reflections. The application must feel mature, calm, minimal, and intentional, not playful or social-media-like.
+
+CORE PRINCIPLES
+
+Absolute privacy: No user accounts, no cloud sync, no analytics, no tracking, no external APIs.
+
+Offline-first: All functionality must work without internet access.
+
+Local-only storage: Use IndexedDB (preferred) or localStorage, with optional client-side encryption before persistence.
+
+Personal use only: No sharing, comments, likes, or public features.
+
+MAIN SECTIONS / MODULES
+
+Implement structured sections with customizable labels:
+
+Dreams & Goals: Long-term visions, ambitions, future plans
+
+Crush Log: Names or nicknames, admiration reasons, emotional notes
+
+Attractions & Preferences: Text-only reflections on personal attractions, patterns, and preferences (no explicit media support)
+
+Things I Love: Music, aesthetics, ideas, places, activities, moments
+
+Free Thoughts: Unstructured journaling space
+
+Mood & Reflection: Daily emotional check-ins with optional emoji indicators
+
+Each entry should support:
+
+Title (optional)
+
+Rich text body
+
+Tags / labels
+
+Timestamp
+
+Edit and soft-delete capability
+
+NAVIGATION & UX
+
+Sidebar or bottom-tab navigation (minimal, distraction-free)
+
+Timeline view to browse entries chronologically
+
+Global search across all entries
+
+Tag-based filtering
+
+Keyboard-friendly and mobile-optimized
+
+SECURITY & PRIVACY FEATURES
+
+App-level PIN lock required on launch
+
+Auto-lock after inactivity
+
+Optional biometric unlock (if platform supports it)
+
+Optional encrypted export of data as a local .json file
+
+No screenshots or share buttons
+
+DESIGN REQUIREMENTS
+
+Dark-mode default (soft blacks, muted neutrals)
+
+Calm typography (modern sans-serif, high readability)
+
+Minimal animations (subtle fades only)
+
+No bright colors, no gamification
+
+Emotionally safe, introspective aesthetic
+
+PWA REQUIREMENTS
+
+Installable on desktop and mobile
+
+Service worker for offline caching
+
+App icon and splash screen
+
+Fast load time (<1s perceived)
+
+TECH CONSTRAINTS
+
+Frontend-only implementation
+
+No backend, no databases outside the browser
+
+Modular, maintainable code structure
+
+Easily extendable with future features (AI prompts, analytics, cloud sync — disabled by default)
+
+OVERALL GOAL
+
+Create an app that feels like a locked journal meets a personal operating system for the mind — private, calm, honest, and deeply personal.
+
+The experience should encourage self-awareness and reflection without judgment, social pressure, or external validation.
