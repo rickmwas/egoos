@@ -1,0 +1,21 @@
+{
+  "name": "EgoOS",
+  "short_name": "EgoOS",
+  "description": "A private, offline operating system for personal reflection.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0e0e11",
+  "theme_color": "#0e0e11",
+  "icons": [
+    {
+      "src": "/egoos.PNG",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/egoos.PNG",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
