@@ -59,6 +59,11 @@ app.use((req, res, next) => {
   next();
 });
 
+let readyResolve: () => void;
+const ready = new Promise<void>((res) => {
+  readyResolve = res;
+});
+
 (async () => {
   await registerRoutes(httpServer, app);
 
@@ -80,6 +85,9 @@ app.use((req, res, next) => {
     await setupVite(httpServer, app);
   }
 
+  // mark initialization complete so serverless handlers can wait
+  readyResolve();
+
   // ALWAYS serve the app on the port specified in the environment variable PORT
   // Other ports are firewalled. Default to 5000 if not specified.
   // this serves both the API and the client.
@@ -100,7 +108,20 @@ app.use((req, res, next) => {
     listenOptions.reusePort = true;
   }
 
-  httpServer.listen(listenOptions, () => {
-    log(`serving on ${host}:${port}`);
-  });
+  // When running on Vercel (or other serverless platforms) we should NOT call
+  // `listen`. Vercel will invoke the exported handler instead of running a
+  // persistent HTTP server. Avoid listening there but keep the normal listen
+  // behavior for local development.
+  if (!process.env.VERCEL) {
+    httpServer.listen(listenOptions, () => {
+      log(`serving on ${host}:${port}`);
+    });
+  }
 })();
+
+// export a serverless-ready handler for platforms like Vercel. The handler
+// waits for initialization to complete before delegating to the Express app.
+export default async function handler(req: Request, res: Response, next?: NextFunction) {
+  await ready;
+  return (app as any)(req, res, next);
+}
